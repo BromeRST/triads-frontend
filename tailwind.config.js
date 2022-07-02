@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         pixel: ['"Press Start 2P"', ...defaultTheme.fontFamily.sans],
+        alagard: ["alagard"],
       },
       backgroundImage: {
         mainBg: "url('/brand/bg.png')",

@@ -23,6 +23,8 @@ export const ContractsProvider = ({ children }) => {
   const [playerMatchesId, setPlayerMatchesId] = useState(null);
   const [playerIdsToSvgs, setPlayerIdsToSvgs] = useState([]);
   const [playerAllGotchiParams, setPlayerAllGotchiParams] = useState([]);
+  const [matchId, setMatchId] = useState(null);
+  const [betSize, setBetSize] = useState(null);
 
   const findPlayerMatches = async () => {
     const matches = await mainContract.findPlayerMatches();
@@ -123,9 +125,13 @@ export const ContractsProvider = ({ children }) => {
         daiContract,
         playerMatchesId,
         playerIdsToSvgs,
+        matchId,
+        betSize,
         setConnected,
         setCurrentAccount,
         setProvider,
+        setMatchId,
+        setBetSize,
         findPlayerMatches,
       }}
     >
