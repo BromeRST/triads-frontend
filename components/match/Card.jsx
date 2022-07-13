@@ -2,14 +2,24 @@ const Card = ({ player, gotchi, gotchiPar, setTokenId }) => {
   let blob = new Blob([gotchi.svg], { type: "image/svg+xml" });
   let url = URL.createObjectURL(blob);
 
+  const click = () => {
+    if (player[0] === "owner") {
+      setTokenId((prevTokeId) => [...prevTokeId, gotchi.tokenId]);
+    } else {
+      setTokenId(gotchi.tokenId);
+    }
+  };
+
   return (
     <div
-      onClick={() => {
-        setTokenId(gotchi.tokenId);
-      }}
+      onClick={click}
       className={`${
-        player[0] === "player1" ? "bg-purpleCard" : "bg-fucsiaCard"
-      } bg-cover w-40 h-56 text-sm text-white nes-pointer flex flex-col items-center`}
+        player[0] === "player1"
+          ? "bg-purpleCard"
+          : player[0] === "owner"
+          ? "bg-waterCard"
+          : "bg-fucsiaCard"
+      } bg-cover w-40 h-56 text-sm text-white nes-pointer flex flex-col items-center hover:opacity-90`}
     >
       <img src={url} className={"w-3/4 mt-6"} />
       <div className="mt-3 w-full flex flex-col">

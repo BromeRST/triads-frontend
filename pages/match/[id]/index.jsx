@@ -20,6 +20,8 @@ export default function App() {
   const [tokenId, setTokenId] = useState(null);
   const [p1Points, setP1Points] = useState(5);
   const [p2Points, setP2Points] = useState(5);
+  const [resetMatch, setResetMatch] = useState(false);
+  const [checkedMatchId, setCheckedMatchId] = useState(false);
 
   const getMatch = async () => {
     /*     setCheckedWinner(false); */
@@ -65,11 +67,7 @@ export default function App() {
     setPlayer2Params([]);
     setPlayer1Gotchis([]);
     setPlayer2Gotchis([]);
-    if (player2Gotchis.length === 0) {
-      console.log("HERE");
-      getMatch();
-      getGrid();
-    }
+    setResetMatch(true);
   };
 
   useEffect(() => {
@@ -78,10 +76,18 @@ export default function App() {
       setPlayer2Params([]);
       setPlayer1Gotchis([]);
       setPlayer2Gotchis([]);
-      getMatch();
-      getGrid();
+      setCheckedMatchId(true);
     }
   }, [matchId]);
+
+  useEffect(() => {
+    if (checkedMatchId || resetMatch) {
+      getMatch();
+      getGrid();
+      setCheckedMatchId(false);
+      setResetMatch(false);
+    }
+  }, [checkedMatchId, resetMatch]);
 
   useEffect(() => {
     if (match) {
@@ -153,15 +159,14 @@ export default function App() {
           />
         </div>
       </div>
-      {/*       <div className="font-pixel">
+      <div className="font-pixel">
         <BottomBar
-          setMatchId={setMatchId}
           matchId={matchId}
           tokenId={tokenId}
           xToPlay={xToPlay}
           yToPlay={yToPlay}
         />
-      </div> */}
+      </div>
     </div>
   );
 }

@@ -17,6 +17,7 @@ module.exports = {
         cardsGrid: "url('/brand/cardsGrid.png')",
         purpleCard: "url('/brand/CARDS/BASE_CARD_PURPLE.png')",
         fucsiaCard: "url('/brand/CARDS/BASE_CARD_FUCSIA.png')",
+        waterCard: "url('/brand/CARDS/BASE_CARD_WATER.png')",
         boardBg: "url('/brand/BOARD/BASE_BOARD_GRID.png')",
         board00: "url('/brand/BOARD/BASE_BOARD_00.png')",
         board01: "url('/brand/BOARD/BASE_BOARD_01.png')",

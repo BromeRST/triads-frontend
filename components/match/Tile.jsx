@@ -53,7 +53,7 @@ const Tile = ({
 
   const card = () => {
     return (
-      <div className="flex flex-col items-center text-base">
+      <div className="flex flex-col items-center text-xs 2xl:text-base">
         <img src={url} className={"w-3/4 mt-6"} />
         <div className="mt-3 w-full flex flex-col">
           <div className="self-center">{params[0]}</div>

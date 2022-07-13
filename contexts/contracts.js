@@ -127,6 +127,7 @@ export const ContractsProvider = ({ children }) => {
         playerIdsToSvgs,
         matchId,
         betSize,
+        playerAllGotchiParams,
         setConnected,
         setCurrentAccount,
         setProvider,
