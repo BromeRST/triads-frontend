@@ -53,9 +53,9 @@ const Tile = ({
 
   const card = () => {
     return (
-      <div className="flex flex-col items-center text-xs 2xl:text-base">
+      <div className="flex flex-col items-center text-xs 2xl:text-sm">
         <img src={url} className={"w-3/4 mt-6"} />
-        <div className="mt-3 w-full flex flex-col">
+        <div className="2xl:mt-4 mt-2 w-full flex flex-col pb-3 2xl:pb-5">
           <div className="self-center">{params[0]}</div>
           <div className="flex justify-around">
             <div>{params[3]}</div>
@@ -81,7 +81,7 @@ const Tile = ({
               backgroundImage: "url('/brand/BOARD/BASE_BOARD_" + bgN + ".png')",
             }
       }
-      className={`bg-cover w-30% h-32% nes-pointer`}
+      className={`bg-cover nes-pointer`}
     >
       {params && card()}
     </div>

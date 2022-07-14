@@ -81,6 +81,7 @@ export default function Home() {
           >
             Check Your Aavegotchis
           </div>
+          <div className="nes-pointer hover:text-brand-pink">Rules</div>
           <div className="nes-pointer hover:text-brand-pink">Options</div>
         </div>
         <div className="w-full h-1/6 flex items-center justify-around">
