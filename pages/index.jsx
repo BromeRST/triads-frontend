@@ -5,7 +5,6 @@ import Contracts from "../contexts/contracts";
 import BetSizeModal from "../components/BetSizeModal";
 import MatchesModal from "../components/MatchesModal";
 import { connectWallet } from "../lib/functions";
-import OwnedGotchiModal from "../components/OwnedGotchiModal";
 import { DIAMOND_FORKED_MAINNET_CONTRACT } from "../lib/constants";
 
 const Home = () => {
@@ -18,9 +17,6 @@ const Home = () => {
     setMatchId,
     playerMatchesId,
     setCurrentAccount,
-    playerIdsToSvgs,
-    playerAllGotchiParams,
-    setTokenIds,
     setConfirmedBet,
   } = useContext(Contracts);
 
@@ -65,12 +61,6 @@ const Home = () => {
             className="nes-pointer hover:text-brand-pink"
           >
             Check Your Matches
-          </div>
-          <div
-            onClick={() => setShowOwned(!showOwned)}
-            className="nes-pointer hover:text-brand-pink"
-          >
-            Check Your Aavegotchis
           </div>
           <div className="nes-pointer hover:text-brand-pink">Rules</div>
           <div className="nes-pointer hover:text-brand-pink">Options</div>
@@ -124,15 +114,6 @@ const Home = () => {
         setShowMatches={setShowMatches}
         playerMatchesId={playerMatchesId}
       />
-      {showOwned && (
-        <OwnedGotchiModal
-          playerGotchis={playerIdsToSvgs}
-          playerParams={playerAllGotchiParams}
-          showOwned={showOwned}
-          setShowOwned={setShowOwned}
-          setTokenIds={setTokenIds}
-        />
-      )}
     </div>
   );
 };
