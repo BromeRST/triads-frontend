@@ -3,9 +3,15 @@ const Card = ({ player, gotchi, gotchiPar, setTokenId }) => {
   let url = URL.createObjectURL(blob);
 
   const click = () => {
-    if (player[0] === "owner") {
-      setTokenId((prevTokeId) => [...prevTokeId, gotchi.tokenId]);
-    } else {
+    if (player[0] === "owner" && !player[1]) {
+      setTokenId((prevTokeId) => {
+        if (prevTokeId.length < 5) {
+          return [...prevTokeId, gotchi.tokenId];
+        } else {
+          return [...prevTokeId];
+        }
+      });
+    } else if (player[0] !== "owner") {
       setTokenId(gotchi.tokenId);
     }
   };

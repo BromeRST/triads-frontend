@@ -36,6 +36,8 @@ module.exports = {
           semiTran: "rgba(12, 12, 12, 0.25)",
           purple: "#8F17F9",
           modal: "rgba(12, 12, 12, 0.8)",
+          darkRed: "#6A0000",
+          red: "#CA3200",
         },
       },
       spacing: {
@@ -50,6 +52,9 @@ module.exports = {
         "99%": "99%",
         gridW: "93%",
         gridY: "92%",
+      },
+      screens: {
+        "3xl": "1700px",
       },
     },
   },

@@ -25,6 +25,9 @@ export const ContractsProvider = ({ children }) => {
   const [playerAllGotchiParams, setPlayerAllGotchiParams] = useState([]);
   const [matchId, setMatchId] = useState(null);
   const [betSize, setBetSize] = useState(null);
+  const [tokenIds, setTokenIds] = useState([]);
+  const [confirmedBet, setConfirmedBet] = useState(false);
+  const [confirmedIds, setConfirmedIds] = useState(false);
 
   const findPlayerMatches = async () => {
     const matches = await mainContract.findPlayerMatches();
@@ -128,6 +131,12 @@ export const ContractsProvider = ({ children }) => {
         matchId,
         betSize,
         playerAllGotchiParams,
+        tokenIds,
+        confirmedBet,
+        confirmedIds,
+        setConfirmedIds,
+        setConfirmedBet,
+        setTokenIds,
         setConnected,
         setCurrentAccount,
         setProvider,

@@ -6,24 +6,22 @@ import BetSizeModal from "../components/BetSizeModal";
 import MatchesModal from "../components/MatchesModal";
 import { connectWallet } from "../lib/functions";
 import OwnedGotchiModal from "../components/OwnedGotchiModal";
-import { register } from "../lib/functions";
 import { DIAMOND_FORKED_MAINNET_CONTRACT } from "../lib/constants";
 
-export default function Home() {
+const Home = () => {
   const {
     currentAccount,
-    mainContract,
     daiContract,
     connected,
     setConnected,
     setProvider,
     setMatchId,
     playerMatchesId,
-    betSize,
-    setBetSize,
     setCurrentAccount,
     playerIdsToSvgs,
     playerAllGotchiParams,
+    setTokenIds,
+    setConfirmedBet,
   } = useContext(Contracts);
 
   const audioRef = useRef();
@@ -31,7 +29,6 @@ export default function Home() {
   const [showSizes, setShowSizes] = useState(false);
   const [showMatches, setShowMatches] = useState(false);
   const [showOwned, setShowOwned] = useState(false);
-  const [tokenIds, setTokenIds] = useState([]);
   const [playing, setPlaying] = useState(false);
 
   const audio = "/brand/audio/landing.wav";
@@ -42,12 +39,6 @@ export default function Home() {
       ethers.utils.parseUnits("100000000000000000000000000", "ether")
     );
   };
-
-  useEffect(() => {
-    if (betSize && tokenIds.length === 5 && mainContract) {
-      register(mainContract, betSize, tokenIds);
-    }
-  }, [betSize, tokenIds, mainContract]);
 
   useEffect(() => {
     playing ? audioRef.current.play() : audioRef.current.pause();
@@ -85,21 +76,27 @@ export default function Home() {
           <div className="nes-pointer hover:text-brand-pink">Options</div>
         </div>
         <div className="w-full h-1/6 flex items-center justify-around">
-          <button
-            onClick={
-              connected
-                ? () => approve()
-                : () =>
-                    connectWallet(setConnected, setCurrentAccount, setProvider)
-            }
-            className="w-1/4 capitalize font-pixel text-base text-white bg-brand-pink rounded-2xl py-4 hover:opacity-90"
-          >
-            {connected
-              ? currentAccount.substring(0, 5) +
-                ".." +
-                currentAccount.substring(39)
-              : "connect wallet"}
-          </button>
+          <div className="p-1.5 bg-[#47288B] rounded">
+            <button
+              onClick={
+                connected
+                  ? () => approve()
+                  : () =>
+                      connectWallet(
+                        setConnected,
+                        setCurrentAccount,
+                        setProvider
+                      )
+              }
+              className="capitalize font-pixel text-base text-white bg-[#722CF0] py-4 px-6 hover:opacity-90"
+            >
+              {connected
+                ? currentAccount.substring(0, 5) +
+                  ".." +
+                  currentAccount.substring(39)
+                : "connect wallet"}
+            </button>
+          </div>
           <div>
             <audio
               controls="controls"
@@ -117,8 +114,8 @@ export default function Home() {
         </div>
       </div>
       <BetSizeModal
-        setBetSize={setBetSize}
         showSizes={showSizes}
+        setConfirmedBet={setConfirmedBet}
         setShowSizes={setShowSizes}
       />
       <MatchesModal
@@ -138,4 +135,6 @@ export default function Home() {
       )}
     </div>
   );
-}
+};
+
+export default Home;
