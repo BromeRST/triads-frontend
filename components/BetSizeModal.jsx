@@ -18,7 +18,7 @@ const BetSizeModal = ({ showSizes, setShowSizes, setConfirmedBet }) => {
         showSizes ? "" : "hidden"
       } flex items-center justify-center font-pixel bg-brand-modal overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full`}
     >
-      <div className="relative w-1/4 p-5 max-w-2xl h-full md:h-auto">
+      <div className="relative w-1/3 p-5 max-w-2xl h-full md:h-auto">
         <div className="min-h-[300px] flex flex-col items-center text-xl text-white relative bg-white">
           <div className="bg-brand-pink p-2.5 w-full">
             <div className="bg-brand-darkPurple h-16 flex items-center justify-center">
