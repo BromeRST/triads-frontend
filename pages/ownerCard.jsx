@@ -41,8 +41,6 @@ const OwnerCard = () => {
     }
   };
 
-  console.log(tokenIds);
-
   useEffect(() => {
     if (
       betSize &&
@@ -66,8 +64,6 @@ const OwnerCard = () => {
     }
   }, [cardsToPlay]);
 
-  console.log(confirmedIds);
-
   return (
     <div className="bg-mainBg h-screen font-pixel text-white flex flex-col justify-around items-center">
       <div className="flex flex-col items-center w-3/4">
@@ -79,6 +75,7 @@ const OwnerCard = () => {
             {playerIdsToSvgs?.map((gotchi, i) => {
               return (
                 <div
+                  key={i}
                   onClick={() =>
                     addCard(
                       <Card
@@ -91,7 +88,6 @@ const OwnerCard = () => {
                   }
                 >
                   <Card
-                    key={i}
                     player={["owner"]}
                     gotchi={gotchi}
                     gotchiPar={playerAllGotchiParams[i]}
