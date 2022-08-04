@@ -37,7 +37,14 @@ const OwnerCard = () => {
 
   const addCard = (card) => {
     if (cardsToPlay.length < 5) {
-      setCardsToPlay((prevCards) => [...prevCards, card]);
+      setCardsToPlay((prevCards) => {
+        for (let i = 0; i < prevCards.length; i++) {
+          if (card.id === prevCards[i].id) {
+            return [...prevCards];
+          }
+        }
+        return [...prevCards, card];
+      });
     }
   };
 
@@ -58,11 +65,11 @@ const OwnerCard = () => {
 
   useEffect(() => {
     if (cardsToPlay.length > 0) {
-      setGridCards((prevCards) =>
-        prevCards.filter((value, i) => i !== prevCards.length - 1)
-      );
+      setGridCards((prevCards) => prevCards.filter((value, i) => i !== 0));
     }
   }, [cardsToPlay]);
+
+  console.log("c", cardsToPlay);
 
   return (
     <div className="bg-mainBg h-screen font-pixel text-white flex flex-col justify-around items-center">
@@ -73,26 +80,20 @@ const OwnerCard = () => {
         <div className="min-h-[300px] py-6 border-4 border-t-0 border-[#722CF0] bg-[#12052D] flex justify-center w-full">
           <div className="grid grid-cols-5 gap-10">
             {playerIdsToSvgs?.map((gotchi, i) => {
-              return (
-                <div
-                  key={i}
-                  onClick={() =>
-                    addCard(
-                      <Card
-                        player={["owner", "check"]}
-                        gotchi={gotchi}
-                        gotchiPar={playerAllGotchiParams[i]}
-                        setTokenId={setTokenIds}
-                      />
-                    )
-                  }
-                >
+              const card = {
+                id: i,
+                card: (
                   <Card
-                    player={["owner"]}
+                    player={["owner", "check"]}
                     gotchi={gotchi}
                     gotchiPar={playerAllGotchiParams[i]}
                     setTokenId={setTokenIds}
                   />
+                ),
+              };
+              return (
+                <div key={i} onClick={() => addCard(card)}>
+                  {card.card}
                 </div>
               );
             })}
@@ -112,7 +113,7 @@ const OwnerCard = () => {
             <div className="p-2.5 bg-yellow-200">
               <div className="p-1.5 bg-[#51441E]">
                 <div className="flex gap-1 w-full h-[227px]">
-                  {cardsToPlay.map((card) => card)}
+                  {cardsToPlay.map((card) => card.card)}
                   {cardsToPlay.length < 5 && gridCards.map((card) => card)}
                 </div>
               </div>
