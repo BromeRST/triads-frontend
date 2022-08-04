@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Card from "./Card";
 import PlayerName from "./PlayerName";
 
@@ -62,6 +63,15 @@ const PlayerSide = ({
             })}
           </div>
         </div>
+        {player[0] === "player1" && (
+          <Link href="/">
+            <div className="p-1.5 bg-brand-darkRed rounded w-36 mt-3">
+              <div className="bg-brand-red text-white w-full h-14 text-base flex items-center justify-center nes-pointer hover:opacity-80">
+                Go Back
+              </div>
+            </div>
+          </Link>
+        )}
       </div>
     </div>
   );

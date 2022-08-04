@@ -81,7 +81,7 @@ const Tile = ({
               backgroundImage: "url('/brand/BOARD/BASE_BOARD_" + bgN + ".png')",
             }
       }
-      className={`bg-cover nes-pointer`}
+      className={`bg-cover xl:h-48 2xl:h-56 3xl:h-64 w-full nes-pointer`}
     >
       {params && card()}
     </div>

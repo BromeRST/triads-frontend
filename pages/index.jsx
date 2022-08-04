@@ -7,6 +7,7 @@ import BetSizeModal from "../components/BetSizeModal";
 import MatchesModal from "../components/MatchesModal";
 import { connectWallet } from "../lib/functions";
 import { DIAMOND_FORKED_MAINNET_CONTRACT } from "../lib/constants";
+import SwapModal from "../components/SwapModal";
 
 const Home = () => {
   const {
@@ -25,8 +26,8 @@ const Home = () => {
 
   const [showSizes, setShowSizes] = useState(false);
   const [showMatches, setShowMatches] = useState(false);
-  const [showOwned, setShowOwned] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [showSwap, setShowSwap] = useState(false);
 
   const audio = "/brand/audio/landing.wav";
 
@@ -64,7 +65,13 @@ const Home = () => {
             Check Your Matches
           </div>
           <div className="nes-pointer hover:text-brand-pink">Rules</div>
-          <Link href={"/confirm"}>
+          <div
+            onClick={() => setShowSwap(true)}
+            className="nes-pointer hover:text-brand-pink"
+          >
+            Swap
+          </div>
+          <Link href="/confirm">
             <div className="nes-pointer hover:text-brand-pink">Options</div>
           </Link>
         </div>
@@ -117,6 +124,7 @@ const Home = () => {
         setShowMatches={setShowMatches}
         playerMatchesId={playerMatchesId}
       />
+      <SwapModal showModal={showSwap} setShowModal={setShowSwap} />
     </div>
   );
 };
