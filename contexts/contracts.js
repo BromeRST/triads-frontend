@@ -28,6 +28,9 @@ export const ContractsProvider = ({ children }) => {
   const [tokenIds, setTokenIds] = useState([]);
   const [confirmedBet, setConfirmedBet] = useState(false);
   const [confirmedIds, setConfirmedIds] = useState(false);
+  const [xToPlay, setXToPlay] = useState(null);
+  const [yToPlay, setYToPlay] = useState(null);
+  const [tokenId, setTokenId] = useState(null);
 
   const findPlayerMatches = async () => {
     const matches = await mainContract.findPlayerMatches();
@@ -143,6 +146,12 @@ export const ContractsProvider = ({ children }) => {
         setMatchId,
         setBetSize,
         findPlayerMatches,
+        xToPlay,
+        setXToPlay,
+        yToPlay,
+        setYToPlay,
+        tokenId,
+        setTokenId,
       }}
     >
       {children}

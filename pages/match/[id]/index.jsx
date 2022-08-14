@@ -7,7 +7,8 @@ import Contracts from "../../../contexts/contracts";
 import { tokenSvgsOfPlayer1, tokenSvgsOfPlayer2 } from "../../../lib/functions";
 
 export default function App() {
-  const { mainContract, aavegotchiContract, matchId } = useContext(Contracts);
+  const { mainContract, aavegotchiContract, matchId, tokenId, setTokenId } =
+    useContext(Contracts);
 
   const [match, setMatch] = useState(null);
   const [player1Params, setPlayer1Params] = useState([]);
@@ -15,9 +16,6 @@ export default function App() {
   const [player2Params, setPlayer2Params] = useState([]);
   const [player2Gotchis, setPlayer2Gotchis] = useState([]);
   const [gridMap, setGridMap] = useState(null);
-  const [xToPlay, setXToPlay] = useState(null);
-  const [yToPlay, setYToPlay] = useState(null);
-  const [tokenId, setTokenId] = useState(null);
   const [p1Points, setP1Points] = useState(5);
   const [p2Points, setP2Points] = useState(5);
   const [resetMatch, setResetMatch] = useState(false);
@@ -52,7 +50,6 @@ export default function App() {
         }
       }
     }
-    console.log(player2Points + player2Gotchis.length);
     setP1Points(player1Gotchis.length + player1Points);
     setP2Points(player2Gotchis.length + player2Points);
   };
@@ -140,13 +137,7 @@ export default function App() {
         </div>
         <div className="w-2/5">
           {gridMap && (
-            <Grid
-              gridMap={gridMap}
-              match={match}
-              setXToPlay={setXToPlay}
-              setYToPlay={setYToPlay}
-              matchId={matchId}
-            />
+            <Grid gridMap={gridMap} match={match} matchId={matchId} />
           )}
         </div>
         <div className="w-1/4">
@@ -160,12 +151,7 @@ export default function App() {
         </div>
       </div>
       <div className="font-pixel">
-        <BottomBar
-          matchId={matchId}
-          tokenId={tokenId}
-          xToPlay={xToPlay}
-          yToPlay={yToPlay}
-        />
+        <BottomBar matchId={matchId} tokenId={tokenId} />
       </div>
     </div>
   );

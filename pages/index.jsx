@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { ethers } from "ethers";
 import { useContext, useEffect, useState, useRef } from "react";
 import Contracts from "../contexts/contracts";
@@ -70,7 +71,9 @@ const Home = () => {
           >
             Swap
           </div>
-          <div className="nes-pointer hover:text-brand-pink">Options</div>
+          <Link href="/confirm">
+            <div className="nes-pointer hover:text-brand-pink">Options</div>
+          </Link>
         </div>
         <div className="w-full h-1/6 flex items-center justify-around">
           <div className="p-1.5 bg-[#47288B] rounded">

@@ -38,6 +38,7 @@ module.exports = {
           modal: "rgba(12, 12, 12, 0.8)",
           darkRed: "#6A0000",
           red: "#CA3200",
+          modal: "rgba(12, 12, 12, 0.8)",
         },
       },
       spacing: {

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Contracts from "../../contexts/contracts";
 
 const BottomBar = ({ matchId, tokenId, xToPlay, yToPlay }) => {
@@ -13,19 +13,23 @@ const BottomBar = ({ matchId, tokenId, xToPlay, yToPlay }) => {
   };
 
   return (
-    <div className="flex justify-between">
-      <button
-        onClick={contestMatch}
-        className="w-1/2 capitalize text-xs text-white bg-brand-purple rounded-2xl py-4 hover:opacity-90"
-      >
-        contest the match
-      </button>
-      <button
-        onClick={playCard}
-        className="w-1/3 self-end capitalize text-xs text-white bg-brand-pink rounded-2xl py-4 hover:opacity-90"
-      >
-        play card
-      </button>
+    <div className="flex justify-between bg-mainBg px-10 py-3">
+      <div className="p-1.5 bg-purple-800 rounded">
+        <div
+          onClick={contestMatch}
+          className="text-white w-56 px-8 py-2 text-base text-center flex items-center justify-center nes-pointer hover:opacity-80 bg-brand-purple"
+        >
+          contest the match
+        </div>
+      </div>
+      <div className="p-1.5 bg-pink-900 rounded">
+        <button
+          onClick={playCard}
+          className="text-white w-56 h-full px-8 py-2 text-base text-center flex items-center justify-center nes-pointer hover:opacity-80 bg-brand-pink"
+        >
+          play card
+        </button>
+      </div>
     </div>
   );
 };

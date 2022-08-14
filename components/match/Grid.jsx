@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import Tile from "./Tile";
 
-const Grid = ({ gridMap, match, setXToPlay, setYToPlay, matchId }) => {
+const Grid = ({ gridMap, match, matchId }) => {
   if (match)
     return (
       <div className="text-white 2xl:text-2xl p-5 flex flex-col items-center gap-5 h-full w-full">
@@ -21,8 +21,6 @@ const Grid = ({ gridMap, match, setXToPlay, setYToPlay, matchId }) => {
                         tokenId={tile.tokenId}
                         winner={tile.winner}
                         match={match}
-                        setXToPlay={setXToPlay}
-                        setYToPlay={setYToPlay}
                         matchId={matchId}
                       />
                     ))

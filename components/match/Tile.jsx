@@ -2,28 +2,15 @@ import { ethers } from "ethers";
 import Contracts from "../../contexts/contracts";
 import { useContext, useEffect, useState } from "react";
 import { checkGotchiParam } from "../../lib/functions";
+import PlayModal from "./PlayCardModal";
 
-const Tile = ({
-  x,
-  y,
-  isActive,
-  tokenId,
-  winner,
-  match,
-  setXToPlay,
-  setYToPlay,
-  matchId,
-}) => {
+const Tile = ({ x, y, isActive, tokenId, winner, match }) => {
   const { aavegotchiContract } = useContext(Contracts);
   const [params, setParams] = useState(null);
   const [url, setUrl] = useState(null);
+  const [showPlay, setShowPlay] = useState(false);
 
   const bgN = y.toString() + x.toString();
-
-  const handleTileClick = () => {
-    setXToPlay(x);
-    setYToPlay(y);
-  };
 
   useEffect(() => {
     if (isActive) {
@@ -68,22 +55,31 @@ const Tile = ({
   };
 
   return (
-    <div
-      onClick={handleTileClick}
-      style={
-        isActive && match !== null && winner == match.player2
-          ? {
-              backgroundImage: "url('/brand/CARDS/BASE_CARD_FUCSIA.png')",
-            }
-          : isActive && match !== null && winner == match.player1
-          ? { backgroundImage: "url('/brand/CARDS/BASE_CARD_PURPLE.png')" }
-          : {
-              backgroundImage: "url('/brand/BOARD/BASE_BOARD_" + bgN + ".png')",
-            }
-      }
-      className={`bg-cover xl:h-48 2xl:h-56 3xl:h-64 w-full nes-pointer`}
-    >
-      {params && card()}
+    <div>
+      <div
+        onMouseEnter={() => {
+          if (!isActive) {
+            setShowPlay(true);
+          }
+        }}
+        onMouseLeave={() => setShowPlay(false)}
+        style={
+          isActive && match !== null && winner == match.player2
+            ? {
+                backgroundImage: "url('/brand/CARDS/BASE_CARD_FUCSIA.png')",
+              }
+            : isActive && match !== null && winner == match.player1
+            ? { backgroundImage: "url('/brand/CARDS/BASE_CARD_PURPLE.png')" }
+            : {
+                backgroundImage:
+                  "url('/brand/BOARD/BASE_BOARD_" + bgN + ".png')",
+              }
+        }
+        className={`bg-cover xl:h-48 2xl:h-56 3xl:h-64 w-full nes-pointer`}
+      >
+        {params && card()}
+        <PlayModal showPlay={showPlay} x={x} y={y} />
+      </div>
     </div>
   );
 };
