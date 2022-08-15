@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
-import BottomBar from "../../../components/match/BottomBar";
 import Grid from "../../../components/match/Grid";
 import PlayerSide from "../../../components/match/PlayerSide";
 import Contracts from "../../../contexts/contracts";
@@ -149,9 +148,6 @@ export default function App() {
             points={p2Points}
           />
         </div>
-      </div>
-      <div className="font-pixel">
-        <BottomBar matchId={matchId} tokenId={tokenId} />
       </div>
     </div>
   );

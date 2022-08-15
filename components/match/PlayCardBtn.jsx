@@ -12,7 +12,7 @@ const PlayCardBtn = ({ x, y }) => {
     <div className="p-1.5 bg-pink-900 rounded">
       <button
         onClick={playCard}
-        className="text-white h-full px-4 py-2 text-sm text-center flex items-center justify-center nes-pointer hover:opacity-80 bg-brand-pink"
+        className="text-white h-full 2xl:px-4 py-2 text-sm text-center flex items-center justify-center nes-pointer hover:opacity-80 bg-brand-pink"
       >
         play card
       </button>
