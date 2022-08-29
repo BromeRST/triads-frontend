@@ -13,7 +13,7 @@ const ContestBtn = () => {
         onClick={contestMatch}
         className="text-white w-36 h-14 text-base text-center flex items-center justify-center nes-pointer hover:opacity-80 bg-brand-purple"
       >
-        contest
+        Contest
       </div>
     </div>
   );

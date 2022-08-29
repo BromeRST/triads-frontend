@@ -30,7 +30,7 @@ const PlayerSide = ({
             {playerGotchis?.map((gotchi, i) => {
               if (i === 0)
                 return (
-                  <div className="col-start-3 ">
+                  <div className="col-start-3">
                     <Card
                       player={player}
                       gotchi={gotchi}

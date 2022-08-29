@@ -21,11 +21,11 @@ const OwnerCard = () => {
 
   const [cardsToPlay, setCardsToPlay] = useState([]);
   const [gridCards, setGridCards] = useState([
-    <img src="/brand/BOARD/BASE_BOARD_11.png" />,
-    <img src="/brand/BOARD/BASE_BOARD_11.png" />,
-    <img src="/brand/BOARD/BASE_BOARD_11.png" />,
-    <img src="/brand/BOARD/BASE_BOARD_11.png" />,
-    <img src="/brand/BOARD/BASE_BOARD_11.png" />,
+    <img key="1" src="/brand/BOARD/BASE_BOARD_11.png" />,
+    <img key="2" src="/brand/BOARD/BASE_BOARD_11.png" />,
+    <img key="3" src="/brand/BOARD/BASE_BOARD_11.png" />,
+    <img key="4" src="/brand/BOARD/BASE_BOARD_11.png" />,
+    <img key="5" src="/brand/BOARD/BASE_BOARD_11.png" />,
   ]);
 
   const goBack = () => {
@@ -84,6 +84,7 @@ const OwnerCard = () => {
                 id: i,
                 card: (
                   <Card
+                    key={i}
                     player={["owner", "check"]}
                     gotchi={gotchi}
                     gotchiPar={playerAllGotchiParams[i]}
