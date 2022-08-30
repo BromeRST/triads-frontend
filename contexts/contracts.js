@@ -119,6 +119,12 @@ export const ContractsProvider = ({ children }) => {
     }
   }, [mainContract]);
 
+  useEffect(() => {
+    if (mainContract) {
+      findPlayerMatches();
+    }
+  }, [mainContract]);
+
   return (
     <Contracts.Provider
       value={{

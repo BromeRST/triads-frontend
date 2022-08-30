@@ -4,7 +4,7 @@ import CancelButton from "./shared/CancelButton";
 import ConfirmButton from "./shared/ConfirmButton";
 
 const BetSizeModal = ({ showSizes, setShowSizes, setConfirmedBet }) => {
-  const betSizes = [1, 5, 10, 25, 50, 100, 200, 500];
+  const betSizes = [1 /* , 5, 10, 25, 50, 100, 200, 500 */];
 
   const { setBetSize } = useContext(Contracts);
 
@@ -27,7 +27,7 @@ const BetSizeModal = ({ showSizes, setShowSizes, setConfirmedBet }) => {
           </div>
           <div className="bg-[#AA24B5] p-2.5 pt-0 w-full">
             <div className="bg-[#CD2DF6] p-2.5 pt-0">
-              <div className="bg-brand-darkPurple flex flex-col gap-4 items-center p-4 w-full">
+              <div className="bg-brand-darkPurple flex flex-col gap-4 items-center p-4 w-full py-10">
                 {betSizes.map((bet, i) => (
                   <div
                     key={i}
