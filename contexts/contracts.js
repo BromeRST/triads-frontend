@@ -31,6 +31,7 @@ export const ContractsProvider = ({ children }) => {
   const [xToPlay, setXToPlay] = useState(null);
   const [yToPlay, setYToPlay] = useState(null);
   const [tokenId, setTokenId] = useState(null);
+  const [showLoading, setShowLoading] = useState(false);
 
   const findPlayerMatches = async () => {
     const matches = await mainContract.findPlayerMatches();
@@ -158,6 +159,8 @@ export const ContractsProvider = ({ children }) => {
         setYToPlay,
         tokenId,
         setTokenId,
+        showLoading,
+        setShowLoading,
       }}
     >
       {children}

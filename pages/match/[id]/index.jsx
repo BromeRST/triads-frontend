@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
 import Grid from "../../../components/match/Grid";
 import PlayerSide from "../../../components/match/PlayerSide";
+import LoadingModal from "../../../components/shared/LoadingModal";
 import Contracts from "../../../contexts/contracts";
 import { tokenSvgsOfPlayer1, tokenSvgsOfPlayer2 } from "../../../lib/functions";
 
@@ -149,6 +150,7 @@ export default function App() {
           />
         </div>
       </div>
+      <LoadingModal />
     </div>
   );
 }

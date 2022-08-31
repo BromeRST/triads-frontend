@@ -2,10 +2,17 @@ import { useContext, useEffect } from "react";
 import Contracts from "../../contexts/contracts";
 
 const PlayCardBtn = ({ x, y }) => {
-  const { mainContract, matchId, tokenId } = useContext(Contracts);
+  const { mainContract, matchId, tokenId, setShowLoading } =
+    useContext(Contracts);
 
   const playCard = async () => {
-    await mainContract.playCard(tokenId, matchId, x, y);
+    const tx = await mainContract.playCard(tokenId, matchId, x, y);
+    setShowLoading(true);
+    const recipt = await tx.wait();
+
+    if (Number(recipt.status) === 1) {
+      setShowLoading(false);
+    }
   };
 
   return (
