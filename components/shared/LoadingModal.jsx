@@ -18,9 +18,14 @@ const LoadingModal = () => {
             </div>
           </div>
           <div className="bg-[#AA24B5] p-2.5 pt-0 w-full">
-            <div className="bg-[#CD2DF6] p-2.5 pt-0">
-              <div className="bg-brand-darkPurple flex flex-col gap-4 items-center p-4 w-full py-10">
+            <div className="bg-[#CD2DF6] p-2.5 pt-0 w-full">
+              <div className="bg-brand-darkPurple flex flex-col gap-4 items-center p-4 w-full py-10 w-full">
                 <img src="/brand/portal.gif" className="w-56" />
+                <div className="text-sm w-4/5 mt-8 uppercase leading-7">
+                  after the tx will be minted, the frontend would take some time
+                  to fetch the event in the blockchain. Please wait that the
+                  board updates.
+                </div>
               </div>
             </div>
           </div>
