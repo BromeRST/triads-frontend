@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import Grid from "../../../components/match/Grid";
 import PlayerSide from "../../../components/match/PlayerSide";
@@ -7,8 +8,14 @@ import Contracts from "../../../contexts/contracts";
 import { tokenSvgsOfPlayer1, tokenSvgsOfPlayer2 } from "../../../lib/functions";
 
 export default function App() {
-  const { mainContract, aavegotchiContract, matchId, tokenId, setTokenId } =
-    useContext(Contracts);
+  const {
+    mainContract,
+    aavegotchiContract,
+    matchId,
+    tokenId,
+    setTokenId,
+    setMatchId,
+  } = useContext(Contracts);
 
   const [match, setMatch] = useState(null);
   const [player1Params, setPlayer1Params] = useState([]);
@@ -20,6 +27,10 @@ export default function App() {
   const [p2Points, setP2Points] = useState(5);
   const [resetMatch, setResetMatch] = useState(false);
   const [checkedMatchId, setCheckedMatchId] = useState(false);
+
+  const router = useRouter();
+
+  console.log("he", router);
 
   const getMatch = async () => {
     /*     setCheckedWinner(false); */
@@ -78,13 +89,21 @@ export default function App() {
   }, [matchId]);
 
   useEffect(() => {
-    if (checkedMatchId || resetMatch) {
-      getMatch();
-      getGrid();
-      setCheckedMatchId(false);
-      setResetMatch(false);
+    if (mainContract && matchId) {
+      if (checkedMatchId || resetMatch) {
+        getMatch();
+        getGrid();
+        setCheckedMatchId(false);
+        setResetMatch(false);
+      }
     }
-  }, [checkedMatchId, resetMatch]);
+  }, [checkedMatchId, resetMatch, mainContract, matchId]);
+
+  useEffect(() => {
+    if (!matchId) {
+      setMatchId(router.query.id);
+    }
+  }, [mainContract, matchId]);
 
   useEffect(() => {
     if (match) {
@@ -104,19 +123,21 @@ export default function App() {
   }, [match]);
 
   useEffect(() => {
-    if (matchId !== null) {
+    if (matchId !== null && mainContract !== null) {
       const CARD_FILTER = mainContract.filters.CardPlayed(matchId);
       mainContract.on(CARD_FILTER, () => {
         resetGridMatch();
       });
     }
-  }, [matchId]);
+  }, [matchId, mainContract]);
 
   useEffect(() => {
     if (match && gridMap) {
       checkPoints();
     }
   }, [match, gridMap, player1Gotchis, player2Gotchis]);
+
+  useEffect(() => {}, []);
 
   return (
     <div>
