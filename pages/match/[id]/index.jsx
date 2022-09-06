@@ -103,7 +103,7 @@ export default function App() {
     if (!matchId) {
       setMatchId(router.query.id);
     }
-  }, [mainContract, matchId]);
+  }, [/* mainContract, */ matchId]);
 
   useEffect(() => {
     if (match) {
